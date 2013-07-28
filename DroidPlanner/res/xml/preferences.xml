@@ -180,7 +180,8 @@
             		android:defaultValue="false"/>
             </PreferenceCategory>
             
-        </PreferenceScreen>
+        </PreferenceScreen><CheckBoxPreference android:key="pref_advanced_use_abolute_altitude" android:title="Use absolute altitude" android:summary="Careful!!! Selecting this option will set your drone to use positive altitude over mean sea level (MSL) " android:defaultValue="false" />
+        
         
     </PreferenceCategory>
     <PreferenceCategory
