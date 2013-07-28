@@ -17,39 +17,39 @@ public class WaypointMarker {
 				.title("WP" + Integer.toString(wp.getNumber()))
 				.snippet(
 						String.format(Locale.ENGLISH, "%s %.1fm", wp.getCmd()
-								.getName(), wp.getHeight())).icon(getIcon(wp));
+								.getType(), wp.getHeight())).icon(getIcon(wp));
 	}
 
 	public static void update(Marker marker, waypoint wp) {
 		marker.setPosition(wp.getCoord());
 		marker.setTitle("WP" + Integer.toString(wp.getNumber()));
 		marker.setSnippet(String.format(Locale.ENGLISH, "%s %.1fm", wp.getCmd()
-				.getName(), wp.getHeight()));
+				.getType(), wp.getHeight()));
 		marker.setIcon(getIcon(wp));
 	}
 
 	private static BitmapDescriptor getIcon(waypoint wp) {
-		switch (wp.getCmd()) {
+		switch (wp.getCmd().getType()) {
 		default:
-		case CMD_NAV_WAYPOINT:
+		case 16: //CMD_NAV_WAYPOINT
 			return BitmapDescriptorFactory
 					.defaultMarker(BitmapDescriptorFactory.HUE_RED);
-		case CMD_NAV_LOITER_TIME:
-		case CMD_NAV_LOITER_TURNS:
-		case CMD_NAV_LOITER_UNLIM:
+		case 19: //CMD_NAV_LOITER_TIME
+		case 18: //CMD_NAV_LOITER_TURNS
+		case 17: //CMD_NAV_LOITER_UNLIM
 			return BitmapDescriptorFactory
 					.defaultMarker(BitmapDescriptorFactory.HUE_BLUE);
-		case CMD_NAV_RETURN_TO_LAUNCH:
+		case 20: //CMD_NAV_RETURN_TO_LAUNCH
 			return BitmapDescriptorFactory
 					.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
-		case CMD_NAV_LAND:
+		case 21: //CMD_NAV_LAND
 			return BitmapDescriptorFactory
 					.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
-		case CMD_NAV_TAKEOFF:
+		case 22: //CMD_NAV_TAKEOFF
 			return BitmapDescriptorFactory
 					.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA);
-		case CMD_NAV_PATHPLANNING:
-		case CMD_NAV_ROI:
+		case 81: //CMD_NAV_PATHPLANNING
+		case 80: //CMD_NAV_ROI
 			return BitmapDescriptorFactory
 					.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
 		}
